@@ -7,9 +7,11 @@ function Dashboard() {
   return (
     <>
         <h1>Where's Waldo</h1>
-        <ImageCard file={WaldoSea} name="sea"></ImageCard>
-        <ImageCard file={WaldoDino} name="dinosaurs"></ImageCard>
-        <ImageCard file={WaldoToys} name="toys"></ImageCard>
+        <div className="imageCardContainer">
+          <ImageCard file={WaldoSea} name="Sea"></ImageCard>
+          <ImageCard file={WaldoDino} name="Dinosaurs"></ImageCard>
+          <ImageCard file={WaldoToys} name="Toys"></ImageCard>
+        </div>
     </>
   )
 }

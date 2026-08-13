@@ -9,7 +9,10 @@ function ImageCard({file, name}) {
 
   return (
     <>
-      <img src={file} width="350em" height="350em" onClick={handleClick}/>
+      <div class="imageCard">
+        <h2>{name}</h2>
+        <img className="displayImage" src={file} width="350em" height="350em" onClick={handleClick}/>
+      </div>
     </>
   )
 }
