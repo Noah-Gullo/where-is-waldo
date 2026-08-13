@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Dropdown from "../components/Dropdown"
 
-function WaldoPage({file,}) {
+function WaldoPage({file, characterNames}) {
   const [popup, setPopup] = useState({visible: false, x: 0, y: 0})
   const handleClick = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -17,7 +17,7 @@ function WaldoPage({file,}) {
         <div style={{ position: 'relative', display: 'inline-block' }}> 
           <img className="imageGame" src={file} width="1475px" height="1000px" onClick={handleClick}/>
           {popup.visible &&
-            <Dropdown x={popup.x} y={[popup.y]}></Dropdown>
+            <Dropdown x={popup.x} y={[popup.y]} names={characterNames}></Dropdown>
           }
         </div>
         <Link to="/">Back to Home</Link>

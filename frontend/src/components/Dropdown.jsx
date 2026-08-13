@@ -1,4 +1,4 @@
-function Dropdown({x, y}){
+function Dropdown({x, y, names}){
     return (
         <>
             <div id="dropdown" style={{
@@ -6,7 +6,12 @@ function Dropdown({x, y}){
                 left: `${x}px`, 
                 top: `${y}px`,
             }}>
-                <h1>a</h1>
+                <select>
+                    <option value="" selected disabled>Select a character</option>
+                    {names.map((name) => (
+                        <option value={name}>{name}</option>
+                    ))}
+                </select>
             </div>
         </>
     )
