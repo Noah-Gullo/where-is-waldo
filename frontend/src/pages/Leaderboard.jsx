@@ -3,7 +3,20 @@ import { Link, useParams } from "react-router-dom";
 
 function Leaderboard() {
   const { board } = useParams();
-  const [scores, setScores] = useState([]);
+  const [times, setTimes] = useState([]);
+
+  function formatTime(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    const ms = milliseconds % 1000;
+
+    return `${minutes}:${seconds
+      .toString()
+      .padStart(2, "0")}.${ms
+      .toString()
+      .padStart(3, "0")}`;
+  }
 
   useEffect(() => {
     async function getLeaderboard() {
@@ -18,7 +31,7 @@ function Leaderboard() {
 
         const data = await response.json();
 
-        setScores(data);
+        setTimes(data);
       } catch (error) {
         console.error(error);
       }
@@ -31,11 +44,29 @@ function Leaderboard() {
     <div>
       <h1>{board} Leaderboard</h1>
 
-      {scores.map((score) => (
-        <p key={score.id}>
-          {score.name}: {score.timeMs}ms
-        </p>
-      ))}
+      {times.length == 0 ? (
+        <p>No submitted times yet.</p>
+      ) : (
+        <table id="leaderboard">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {times.map((time, index) => (
+              <tr key={time.id}>
+                <td>{index + 1}</td>
+                <td>{time.name}</td>
+                <td>{formatTime(time.timeMs)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       <Link to="/">Back to Home</Link>
     </div>

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Result({ time }) {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   function formatTime(milliseconds) {
     const totalSeconds = Math.floor(milliseconds / 1000);
@@ -40,10 +41,14 @@ function Result({ time }) {
       });
 
       const data = await response.json();
+      sessionStorage.removeItem("resultToken");
+      localStorage.removeItem("gameToken");
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to submit score");
       }
+
+      navigate(`/leaderboard/${data.score.board}`);
     } catch (error) {
       console.error(error);
     }
