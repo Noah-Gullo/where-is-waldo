@@ -4,6 +4,7 @@ import Dropdown from "../components/Dropdown"
 
 function WaldoPage({file, characterNames}) {
   const [popup, setPopup] = useState({visible: false, x: 0, y: 0})
+  
   const handleClick = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -17,7 +18,7 @@ function WaldoPage({file, characterNames}) {
         <div style={{ position: 'relative', display: 'inline-block' }}> 
           <img className="imageGame" src={file} width="1475px" height="1000px" onClick={handleClick}/>
           {popup.visible &&
-            <Dropdown x={popup.x} y={[popup.y]} names={characterNames}></Dropdown>
+            <Dropdown x={popup.x} y={popup.y} names={characterNames}></Dropdown>
           }
         </div>
         <Link to="/">Back to Home</Link>

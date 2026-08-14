@@ -1,15 +1,29 @@
 function Dropdown({x, y, names}){
+    const handleSelect = async(event) => {
+        const name = event.target.value;
+        const response = await fetch("http://localhost:3000/check", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({x, y, name })
+        });
+        const data = await response.json();
+        const isValid = data.valid;
+        console.log(isValid + ". " + name + " at " + "(" + x + ", " + y + ")");
+    }
+
     return (
         <>
-            <div id="dropdown" style={{
+            <div id="dropdownContainer" style={{
                 position: 'absolute',
                 left: `${x}px`, 
                 top: `${y}px`,
             }}>
-                <select>
-                    <option value="" selected disabled>Select a character</option>
+                <select id="dropdown" name="dropdown" value="" onChange={handleSelect}>
+                    <option value="" disabled hidden>Select a character</option>
                     {names.map((name) => (
-                        <option value={name}>{name}</option>
+                        <option key={name} value={name}>{name}</option>
                     ))}
                 </select>
             </div>

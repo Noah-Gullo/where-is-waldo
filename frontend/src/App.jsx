@@ -14,9 +14,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Dashboard />}></Route>
-        <Route path="/sea" element={<WaldoPage file={WaldoSea} characterNames={["Waldo", "Fish", "Nemo"]}/>} />
-        <Route path="/dinosaurs" element={<WaldoPage file={WaldoDino} characterNames={["Waldo", "Asteroid"]}/>} />
-        <Route path="/toys" element={<WaldoPage  file={WaldoToys} characterNames={["Waldo", "Barney"]}/>} />
+        <Route path="/sea" element={<WaldoPage file={WaldoSea} characterNames={["Waldo", "Octopus", "Swordfish"]}/>} />
+        <Route path="/dinosaurs" element={<WaldoPage file={WaldoDino} characterNames={["Waldo", "Fly on a Plate", "Mimic Chest"]}/>} />
+        <Route path="/toys" element={<WaldoPage  file={WaldoToys} characterNames={["Waldo", "Clock Man", "Elephant"]}/>} />
       </Routes>
     </>
   )

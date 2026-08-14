@@ -45,3 +45,7 @@ h1{
 .imageGame{
     margin: 1em;
 }
+
+#dropdown > option:nth-child(even){
+    background-color: rgb(255, 226, 226);
+}
