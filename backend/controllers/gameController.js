@@ -129,9 +129,24 @@ async function submitScore(req, res) {
   }
 }
 
+async function getTimes(req, res){
+  try{
+    const { board } =  req.params;
+    const scores = await db.getTimes(board);
+
+    return res.json(scores);
+  }catch(error){
+    console.log(error);
+    return res.status(500).json({
+      error: "Failed to get leaderboard",
+    });
+  }
+}
+
 module.exports = {
   checkCoordinates,
   startGame,
   finishGame,
-  submitScore
+  submitScore,
+  getTimes
 };

@@ -26,7 +26,19 @@ async function createScore(name, timeMs, board) {
   });
 }
 
+async function getTimes(board){
+    return prisma.score.findMany({
+        where: {
+            board: board,
+        },
+        orderBy: {
+            timeMs: "asc",
+        },
+    });
+}
+
 module.exports = {
     findChar,
-    createScore
+    createScore,
+    getTimes
 }
