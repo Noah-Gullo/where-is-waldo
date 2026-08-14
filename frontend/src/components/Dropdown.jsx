@@ -1,7 +1,8 @@
 function Dropdown({ x, y, names, handleSelectResult }) {
     const handleSelect = async (event) => {
         const name = event.target.value;
-        const response = await fetch("http://localhost:3000/check", {
+        const API_URL = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${API_URL}/check`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

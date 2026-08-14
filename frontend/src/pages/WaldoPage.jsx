@@ -14,7 +14,8 @@ function WaldoPage({ file, characterNames }) {
 
   async function startGame() {
     try {
-      const response = await fetch("http://localhost:3000/game", {
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${API_URL}}/game`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +41,8 @@ function WaldoPage({ file, characterNames }) {
     try {
       const token = localStorage.getItem("gameToken");
 
-      const response = await fetch("http://localhost:3000/game/finish", {
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${API_URL}}/game/finish`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
