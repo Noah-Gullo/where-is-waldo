@@ -18,6 +18,16 @@ function Leaderboard() {
       .padStart(3, "0")}`;
   }
 
+  function formatDate(timestamp) {
+    return new Date(timestamp).toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }
+
   useEffect(() => {
     async function getLeaderboard() {
       try {
@@ -47,25 +57,29 @@ function Leaderboard() {
       {times.length == 0 ? (
         <p>No submitted times yet.</p>
       ) : (
-        <table id="leaderboard">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {times.map((time, index) => (
-              <tr key={time.id}>
-                <td>{index + 1}</td>
-                <td>{time.name}</td>
-                <td>{formatTime(time.timeMs)}</td>
+        <div className="leaderboardPage">
+          <table id="leaderboard">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Submitted On</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {times.map((time, index) => (
+                <tr key={time.id}>
+                  <td>{index + 1}</td>
+                  <td>{time.name}</td>
+                  <td>{formatTime(time.timeMs)}</td>
+                  <td>{formatDate(time.createdAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       <Link to="/">Back to Home</Link>

@@ -10,6 +10,11 @@ h1{
     justify-content: center;
 }
 
+.subtitle {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
 .imageCardContainer{
     display: flex;
     justify-content: center;
@@ -35,11 +40,18 @@ h1{
 .displayImage{
     border: 2px solid black;
     border-radius: 10px;
+    cursor: pointer;
     transition: ease-in-out 0.2s;
 }
 
 .displayImage:hover{
-    border: 4px solid black
+    border: 4px solid black;
+    transform: scale(1.02);
+}
+
+.displayImage:active{
+    border: 3px solid black;
+    transform: scale(0.99);
 }
 
 .imageGame{
@@ -77,16 +89,16 @@ a{
     margin-left: 1em
 }
 
-#leaderboard{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.leaderboardPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
 }
 
-#leaderboard table {
-  border-collapse: collapse;
-  width: 500px;
-  table-layout: fixed;
+#leaderboard {
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 #leaderboard th,
@@ -95,6 +107,36 @@ a{
   text-align: center;
 }
 
-#leaderboard th {
-  border-bottom: 2px solid black;
+#leaderboard tbody tr:nth-child(odd) {
+  background-color: rgb(255, 226, 226);
+}
+
+#leaderboard tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+.leaderboardButton {
+  margin-top: 1em;
+  padding: 0.7em 1.2em;
+
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.leaderboardButton:hover {
+  background-color: rgb(213, 212, 212);
+  transform: translateY(2px);
+  transition: ease-in-out 0.2s;
+}
+
+.leaderboardButton:active {
+  background-color: rgb(166, 166, 166);
+  transform: translateY(0);
 }

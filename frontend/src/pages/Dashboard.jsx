@@ -7,6 +7,7 @@ function Dashboard() {
   return (
     <>
         <h1>Where's Waldo</h1>
+        <p className="subtitle">Choose a scene to start playing</p>
         <div className="imageCardContainer">
           <ImageCard file={WaldoSea} name="Sea"></ImageCard>
           <ImageCard file={WaldoDino} name="Dinosaurs"></ImageCard>
