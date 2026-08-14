@@ -49,3 +49,26 @@ h1{
 #dropdown > option:nth-child(even){
     background-color: rgb(255, 226, 226);
 }
+
+.resultOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.resultContainer {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  min-width: 320px;
+  text-align: center;
+}
+
+.resultContainer > form{
+    display: flex;
+    gap: 0.5em;
+}
