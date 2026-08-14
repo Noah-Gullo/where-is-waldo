@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import Dropdown from "../components/Dropdown"
 import Result from "../components/Result"
+
 
 function WaldoPage({ file, characterNames }) {
   const [popup, setPopup] = useState({ visible: false, x: 0, y: 0 })
@@ -9,14 +10,19 @@ function WaldoPage({ file, characterNames }) {
   const [remainingNames, setRemainingNames] = useState(characterNames);
   const [completionTime, setCompletionTime] = useState(null);
 
+  const game = location.pathname.slice(1);
+
   async function startGame() {
     try {
-      const response = await fetch(
-        "http://localhost:3000/game",
-        {
-          method: "POST",
-        }
-      );
+      const response = await fetch("http://localhost:3000/game", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          game,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("Failed to start game");
@@ -46,10 +52,9 @@ function WaldoPage({ file, characterNames }) {
       }
 
       const data = await response.json();
+      sessionStorage.setItem("resultToken", data.resultToken);
 
       setCompletionTime(data.durationMs);
-
-      console.log("Time taken:", formatTime(data.durationMs));
 
     } catch (error) {
       console.error(error);
@@ -122,7 +127,6 @@ function WaldoPage({ file, characterNames }) {
         ))}
       </div>
       
-      <br />
       <Link to="/">Back to Home</Link>
     </div>
     </>

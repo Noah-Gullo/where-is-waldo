@@ -16,6 +16,17 @@ async function findChar(name, x, y){
     return false;
 }
 
+async function createScore(name, timeMs, board) {
+  return prisma.score.create({
+    data: {
+      name,
+      timeMs,
+      board,
+    },
+  });
+}
+
 module.exports = {
     findChar,
+    createScore
 }

@@ -15,3 +15,11 @@ model character{
   left Int
   right Int
 }
+
+model Score {
+  id        Int      @id @default(autoincrement())
+  name      String
+  timeMs    Int
+  board     String
+  createdAt DateTime @default(now())
+}
