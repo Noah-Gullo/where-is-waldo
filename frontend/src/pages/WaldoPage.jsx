@@ -15,7 +15,7 @@ function WaldoPage({ file, characterNames }) {
   async function startGame() {
     try {
       const API_URL = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${API_URL}}/game`, {
+      const response = await fetch(`${API_URL}/game`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
