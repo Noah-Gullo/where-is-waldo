@@ -9,17 +9,17 @@ A web application that implements a similar game to [Where's Waldo/Wally](https:
 
 ### Game Selection
 <p align="center">
-  <img src="image.png" alt="Game Selection" width="800">
+  <img src="./screenshots/gameSelection.png" alt="Game Selection" width="800">
 </p>
 
 ### Gameplay
 <p align="center">
- <img src="image-1.png" alt="Where's Waldo gameplay" width="800">
+ <img src="./screenshots/gameplay.png" alt="Where's Waldo gameplay" width="800">
 </p>
 
 ### Game Over
 <p align="center">
- <img src="image-2.png" alt="Game completion modal" width="800">
+ <img src="./screenshots/gameOver.png" alt="Game completion modal" width="800">
 </p>
 
 
