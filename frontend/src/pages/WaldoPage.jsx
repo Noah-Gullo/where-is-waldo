@@ -42,7 +42,7 @@ function WaldoPage({ file, characterNames }) {
       const token = localStorage.getItem("gameToken");
 
       const API_URL = import.meta.env.VITE_API_URL;
-      const response = await fetch(`${API_URL}}/game/finish`, {
+      const response = await fetch(`${API_URL}/game/finish`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
