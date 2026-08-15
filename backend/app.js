@@ -12,7 +12,7 @@ const allowedOrigins = [
   process.env.CLIENT_FRONTEND_URL,
 ].filter(Boolean);
 
-const corsOptions = {
+/*const corsOptions = {
   origin(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
@@ -20,6 +20,12 @@ const corsOptions = {
 
     return callback(new Error(`Not allowed by CORS: ${origin}`));
   },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));*/
+const corsOptions = {
+  origin: "https://where-is-waldo-production-deaa.up.railway.app",
   credentials: true,
 };
 
